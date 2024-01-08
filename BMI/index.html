@@ -30,48 +30,54 @@
   <body>
     <div class="container">
       <div class="box">
-        <h1>BMI Calculator</h1>
+        <h1>Perhitungan Berat Badan Ideal (BMI)</h1>
         <div class="content">
           <div class="input">
-            <label for="height">Age</label>
+            <label for="height">Usia</label>
             <input type="text" class="text-input" id="age" autocomplete="off" required />
           </div>
 
           <div class="gender">
             <label class="container">
               <input type="radio" name="radio" id="m" />
-              <p class="text">Male</p>
+              <p class="text">Laki-Laki</p>
               <span class="checkmark"></span>
             </label>
 
             <label class="container">
               <input type="radio" name="radio" id="f" />
-              <p class="text">Female</p>
+              <p class="text">Perempuan</p>
               <span class="checkmark"></span>
             </label>
           </div>
 
           <div class="containerHW">
             <div class="inputH">
-              <label for="height">Height(cm)</label>
+              <label for="height">Tinggi(cm)</label>
               <input type="number" id="height" required />
             </div>
 
             <div class="inputW">
-              <label for="weight">Weight(kg)</label>
+              <label for="weight">Berat(kg)</label>
               <input type="number" id="weight" required />
             </div>
           </div>
 
-          <button class="calculate" id="submit" onclick="calculate();">Calculate BMI</button>
+          <button class="calculate" id="submit" onclick="calculate();">Lanjutkan</button>
         </div>
         <div class="result">
-          <p>Your BMI is</p>
+          <p>BMI anda adalah</p>
           <div id="result">00.00</div>
           <p class="comment"></p>
+
+          <a href="#"><button class="calculate" name="a1" id="submit">Menambah Berat Badan</button></a>
+          <a href="#"><button class="calculate" name="a2" id="submit">Mempertahankan Berat Badan</button></a>
+          <a href="#"><button class="calculate" name="a3" id="submit">Mengurangi Berat Badan</button></a>
         </div>
         <div class="footer">
-          <button class="gogo"><a href="../index.html" class="btn btn-light py-sm-3 px-sm-5 rounded-pill me-3 animated slideInRight">Back</a></button>
+          <a href="../index.html">
+            <button class="gogo" class="btn btn-primary">Back</button>
+          </a>
         </div>
       </div>
     </div>
