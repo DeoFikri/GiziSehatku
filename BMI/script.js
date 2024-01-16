@@ -5,6 +5,7 @@ var male = document.getElementById('m');
 var female = document.getElementById('f');
 var form = document.getElementById('form');
 let resultArea = document.querySelector('.comment');
+let result1Area = document.querySelector('.comment1');
 
 modalContent = document.querySelector('.modal-content');
 modalText = document.querySelector('#modalText');
@@ -17,6 +18,7 @@ function calculate() {
     modalText.innerHTML = `All fields are required!`;
   } else {
     countBmi();
+    countBmr();
   }
 }
 
@@ -46,6 +48,27 @@ function countBmi() {
   resultArea.style.display = 'block';
   document.querySelector('.comment').innerHTML = `Anda <span id="comment">${result}</span>`;
   document.querySelector('#result').innerHTML = bmi.toFixed(2);
+}
+
+function countBmr() {
+  var p = [age.value, height.value, weight.value];
+  if (male.checked) {
+    p.push('male');
+  } else if (female.checked) {
+    p.push('female');
+  }
+
+  var bmr = 0;
+
+  // Rumus perhitungan BMR untuk pria dan wanita
+  if (p[3] === 'male') {
+    bmr = 13.397 * weight.value + 66.5 + 5.003 * height.value - 6.75 * age.value;
+  } else if (p[3] === 'female') {
+    bmr = 9.563 * weight.value + 655 + 1.85 * height.value - 4.676 * age.value;
+  }
+  var bmr = bmr / 1000;
+  result1Area.style.display = 'block';
+  document.querySelector('#result1').innerHTML = bmr.toFixed(3) + ' kalori/hari';
 }
 
 // When the user clicks on <span> (x), close the modal
