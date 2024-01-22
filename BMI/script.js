@@ -15,7 +15,7 @@ var span = document.getElementsByClassName('close')[0];
 function calculate() {
   if (age.value == '' || height.value == '' || weight.value == '' || (male.checked == false && female.checked == false)) {
     modal.style.display = 'block';
-    modalText.innerHTML = `All fields are required!`;
+    modalText.innerHTML = `Diharapkan Mengisi Semua tabel yang tertera!`;
   } else {
     countBmi();
     countBmr();
