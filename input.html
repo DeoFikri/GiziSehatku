@@ -59,7 +59,7 @@
             <a href="#services" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Services</span></a>
           </li> -->
           <li>
-            <a href="input.html" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Mulai</span></a>
+            <a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Mulai</span></a>
           </li>
         </ul>
       </nav>
@@ -68,24 +68,72 @@
     <!-- End Header -->
 
     <!-- ======= Hero Section ======= -->
-    <section id="hero" class="d-flex flex-column justify-content-center">
-      <div class="container" data-aos="zoom-in" data-aos-delay="100">
-        <h1>Gizi Sehatku</h1>
-        <p>I'm <span class="typed" data-typed-items="Healthy Harmony, Balanced Wellness, Nutrition Synergy, Wellbeing Fusion"></span></p>
 
-        <div class="social-links">
-          <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-          <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-          <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-          <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-          <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-        </div>
-        <div class="col-lg-6 align-self-center text-center text-lg-start mb-lg-5">
-          <a href="input.html" class="btn btn-light py-sm-3 px-sm-5 rounded-pill me-3 animated slideInRight">MULAI</a>
-        </div>
-      </div>
-    </section>
     <!-- End Hero -->
+
+    <main id="main">
+      <!-- ======= Contact Section ======= -->
+      <section id="contact" class="contact">
+        <div class="container" data-aos="fade-up">
+          <div class="section-title">
+            <h2>Mulai</h2>
+          </div>
+
+          <div class="row mt-1">
+            <div class="col-lg-4">
+              <h4>Isi Data Diri:</h4>
+              <p>Sebelum memulai perhitungan BMI, Mohon isi data diri dibawah</p>
+            </div>
+
+            <div class="col-lg-8 mt-1 mt-lg-0">
+              <div class="alert alert-success alert-dismissible fade show d-none my-alert" role="alert">
+                <strong>Data Berhasil Di Kirim</strong> Silahkan Tekan Lanjutkan.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+              <form name="wpu-contact-form">
+                <div class="row">
+                  <div class="col-md-6 form-group">
+                    <input type="text" name="nama" class="form-control" id="name" placeholder="Nama" required />
+                  </div>
+                  <div class="col-md-6 form-group mt-3 mt-md-0">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Email" required />
+                  </div>
+                </div>
+                <div class="form-group mt-3">
+                  <input type="text" class="form-control" name="subjek" id="subject" placeholder="Usia" required />
+                </div>
+                <div class="form-group mt-3">
+                  <input type="text" class="form-control" name="tb" id="tb" placeholder="Tinggi Badan (CM)" required />
+                </div>
+                <div class="form-group mt-3">
+                  <input type="text" class="form-control" name="bb" id="bb" placeholder="Berat Badan (KG)" required />
+                </div>
+                <div class="input-group mt-3">
+                  <label class="input-group-text" for="inputGroupSelect01">Pilihan</label>
+                  <select class="form-select" name="pesan" id="inputGroupSelect01">
+                    <option selected>Jenis Kelamin</option>
+                    <option value="1">Laki Laki</option>
+                    <option value="2">Perempuan</option>
+                  </select>
+                </div>
+
+                <div class="my-3"></div>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary btn-kirim">Mulai</button>
+                  <a href="BMI/index.html"><button type="button" class="btn btn-primary btn-lanjut d-none">Lanjutkan</button></a>
+                  <button class="btn btn-primary btn-loading d-none" type="button" disabled>
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    Loading...
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End Contact Section -->
+    </main>
+    <!-- End #main -->
 
     <!-- ======= Footer ======= -->
     <footer id="footer">
@@ -134,5 +182,28 @@
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
+
+    <script>
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbzX03-_Pnc_i3cItDvFGmhVcjTSV9618vzHDJMFkCoj6tW5y4hgPA3-cMcRou-x_d6G/exec';
+      const form = document.forms['wpu-contact-form'];
+      const btnKirim = document.querySelector('.btn-kirim');
+      const btnLoading = document.querySelector('.btn-loading');
+      const myAlert = document.querySelector('.my-alert');
+      const btnLanjut = document.querySelector('.btn-lanjut');
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        btnLoading.classList.toggle('d-none');
+        btnKirim.classList.toggle('d-none');
+        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+          .then((response) => {
+            btnLoading.classList.toggle('d-none');
+            btnLanjut.classList.toggle('d-none');
+            myAlert.classList.toggle('d-none');
+            console.log('Success', response);
+          })
+          .catch((error) => console.error('Error!', error.message));
+      });
+    </script>
   </body>
 </html>
